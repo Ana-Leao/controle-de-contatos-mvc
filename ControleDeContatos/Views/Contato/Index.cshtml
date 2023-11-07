@@ -3,12 +3,33 @@
     ViewData["Title"] = "Listagem de contatos";
 }
 
+
+@if(TempData["MessagemSucesso"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        <button type="button" class="btn btn-success btn-sm close-alert" arial-label="Close">
+            X
+        </button>
+        @TempData["MessagemSucesso"]
+    </div>
+}
+
+@if(TempData["MessagemErro"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">
+            X
+        </button>
+        @TempData["MessagemErro"]
+    </div>
+}
+
+<br />
+
 <div class="d-flex justify-content-between align-items-center mb-4 mt-4">
     <h1 class="display-6">Listagem de contatos</h1>
     <a role="button" class="btn btn-primary" asp-controller="Contato" asp-action="Criar">Adicionar novo contato</a>
 </div>
-
-
 <div class="text-center">
     <table class="table">
         <thead>
@@ -33,7 +54,7 @@
                         <td>
                             <div class="btn-group" role="group">
                                 <a role="button" class="btn btn-primary" asp-route-id=@contato.Id asp-controller="Contato" asp-action="Editar">Editar</a>
-                                <a role="button" class="btn btn-danger" asp-route-id=@contato.Id asp-controller="Contato" asp-action="Deletar">Deletar</a>
+                                <a role="button" class="btn btn-danger" asp-route-id=@contato.Id asp-controller="Contato" asp-action="ConfirmacaoApagar">Deletar</a>
                             </div>
                         </td>
                     </tr>
